@@ -1,0 +1,83 @@
+.white-background{
+  display: flex;
+  background: white;
+  align-items: center;
+  padding: 7px;
+  /* width: 44%;
+  height: 21px; */
+  border-radius: 20px;
+}
+
+.video-width{
+  width: 277px;
+  border: 3px solid white;
+}
+
+.icon-change{
+    border-radius: 20px;
+    margin-right: 7px;
+}
+.other-profile.m10.dinline.text-center{
+  video{
+    width: 277px;
+    border: 3px solid white;
+  }
+}
+
+.imgclass{
+  border: 3px solid white;
+  max-width: 250px;
+  max-height: 250px;
+  width: 100%;
+  height: 100%;
+}
+
+.flex-containers {
+    display: flex;
+    font-size: 30px;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+    }
+    
+    .flex-item-left {
+      padding: 10px;
+      flex: 30%;
+    }
+    
+    .flex-item-right {
+      padding: 10px;
+      flex: 30%;
+    }
+    .flex-item-middle {
+      padding: 10px;
+      flex: 30%;
+    }
+    
+    /* Responsive layout - makes a one column-layout instead of two-column layout */
+    @media (max-width: 800px) {
+      .flex-containers {
+        flex-direction: row;
+        display: flex;
+        flex-direction: row;
+        font-size: 30px;
+        text-align: center;
+      }
+      .flex-item-left {
+          padding: 10px;
+          flex: 20%;
+        }
+        
+        .flex-item-right {
+          padding: 10px;
+          flex: 20%;
+        }
+        .flex-item-middle {
+          padding: 10px;
+          flex: 30%;
+        }
+        .imgclass{
+          max-width: 100px;
+          max-height: 100px;
+        }
+    }

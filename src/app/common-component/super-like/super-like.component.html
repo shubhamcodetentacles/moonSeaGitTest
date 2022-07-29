@@ -1,0 +1,17 @@
+<div class="flex align-items-center text-center mt30 mb30 wp100 justify-center" >
+    <div class="icon">
+        <button (click)="dislike()" matTooltip="Dislike"> 
+            <img class="icon-change" src="assets/siteimage/danger.jpg" width="40px" alt="">
+        </button>
+    </div>
+    <div class="icon">
+       <button (click)="superLike()"   matTooltip="Super Like">
+        <img class="icon-change" src="assets/siteimage/yellowfire.jpg" width="40px" alt="">
+       </button>
+    </div>
+    <div class="icon" *ngIf="hideLikeButton">
+        <button (click)="like()" matTooltip="Like">
+            <img class="icon-change" src="assets/siteimage/greenlove.jpg" width="40px" alt="">
+        </button>
+    </div>
+</div>   

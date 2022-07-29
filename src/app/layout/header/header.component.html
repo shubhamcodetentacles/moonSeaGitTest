@@ -1,0 +1,83 @@
+<div class="nav-wrapper">
+  <div class="logo-container">
+    <div class="navbar-brand navbar-brand1 scroll-btn">
+      <a
+        class="flex-center"
+        style="
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          font-family: 'LuloCleanOne-Bold';
+        "
+        ><img
+          src="https://project-moonshot-web.web.app/assets/media/images/logo.png"
+          alt="moonshot logo"
+          class="logo"
+          style="width: 30px; height: auto"
+        />
+        MOON <span>SHOT</span></a>
+    </div>
+  </div>
+  <nav class="dflex">
+    <input class="hidden" type="checkbox" id="menuToggle" />
+    <label class="menu-btn" htmlFor="menuToggle">
+      <div class="menu"></div>
+      <div class="menu"></div>
+      <div class="menu"></div>
+    </label>
+    <div class="nav-container">
+      <ul class="nav-tabs ">
+        <li class="nav-tab">
+          <div class="nav-link text-uppercase" [routerLink]="['/home']">Home</div>
+        </li>
+        <div class="vi"></div>  
+        <li class="nav-tab">
+          <div class="nav-link text-uppercase">About ra8bits</div>
+        </li>
+        <div class="vi"></div>
+        <li class="nav-tab">
+          <a
+            href="https://moonboxes.io/artist/0x66A7B9f608378e59105022aB00b0F541666e8c4d"
+            target="_blank"
+          >
+            <div class="nav-link text-uppercase">Buy Nft's</div>
+          </a>
+        </li>
+        <div class="vi"></div>
+        <li class="nav-tab">
+          <div class="nav-link text-uppercase">Buy ra8bits</div>
+        </li>
+        <div class="vi"></div>
+        <li class="nav-tab">
+          <div class="nav-link text-uppercase">Contact</div>
+        </li>
+        <div class="vi"></div>
+        <li class="nav-tab" [routerLink]="['match']">
+          <div class="nav-link text-uppercase">My Matches</div>
+        </li>
+        <div class="vi"></div>
+        <li class="nav-tab" [routerLink]="['superLike']">
+          <div class="nav-link text-uppercase">Super Liked List</div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="brand-name">
+    <div class="nav-tab">
+      <div class="nav-link text-uppercase rl">Ra8bits</div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+    <div class="topnav">
+      <a href="#home" class="active">Logo</a>
+      <div id="myLinks">
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div> -->

@@ -1,0 +1,115 @@
+<!-- 
+
+
+
+
+
+
+<div class="flex h-100 wp100 align-center">
+    <div class="wp100 justify-center">
+        <div>
+            <div class="heading text-white flex-col">
+                <h3 class="text-bold text-uppercase text-center mb50">Your Matches</h3>
+            </div>
+            
+            <section id="landing-nfts" class="match">
+                <section class="landing-carousel">
+                    <swiper [config]="config" (activeIndexChange)="onIndexChange($event)" (slideChange)="onIndexChange($event)" (realIndexChange)="onIndexChange($event)">
+                        <ng-container *ngFor="let slide of nftCards; index as i">
+                            
+                                <ng-template swiperSlide>
+                                    <div class="nft-image-container" >
+                                       <a (click)="gotoYourMatch(slide)">
+                                        <img src="{{slide.FileUrl}}" alt="{{slide.NickName}}">
+                                       </a>
+                                    </div>
+                                    
+                                    <div class="mt20">
+                                        <h4 class="title text-white head">{{slide.NickName}}</h4>
+                                    </div>
+                                    <div class="title flex-col mt-3  align-items-center text-center">
+                                        <button class="btn-primary" (click)="accept(i)">Accept</button>
+                                        <button class="btn-primary" (click)="reject(i)">Reject</button>
+
+                                        <div class="social-media ml-4 mt-4">
+                                            <button type="button" class="btn-primary" (click)="gotoshowProfile(slide.NftId)">
+                                                view Profile
+                                            </button>
+                                        </div>             
+                                    </div>
+                                </ng-template>
+                        </ng-container>
+                    </swiper>
+                </section>
+            </section>
+           
+        </div> 
+             
+    </div>   
+</div>
+ -->
+
+
+<div class="centerY">
+    <mat-tab-group class="tab">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <!-- <mat-icon class="example-tab-icon" style="color: white;">thumb_up</mat-icon> -->
+                <a class="text-uppercase">Send Super Like </a>
+            </ng-template>
+
+            <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10">
+                <div *ngFor="let item of youLikeByNft ">
+
+                    <mat-card class="card1" fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+                        fxFlex.gt-md="0 1 calc(25%-10px)">
+                        <!-- <mat-card-title>Card 1</mat-card-title> -->
+                        <img mat-card-image [defaultImage]="defaultImage" [lazyLoad]="item.FileUrl" class="image">
+                        <mat-card-content>
+                            <h3>{{item.NickName}}</h3>
+                            <h4>{{item.Description}}</h4>
+                        </mat-card-content>
+                        <mat-divider inset></mat-divider>
+                        <mat-card-actions class="mt-10">
+                            <button type="button" class="btn-primary" (click)="gotoshowProfile(item , true)">
+                                view Profile
+                            </button>
+                            <div *ngIf="!isTimeOut">
+                                <h3>{{item?.endDate | date}}</h3>
+                            </div>
+                            <div class="mb" *ngIf="isTimeOut">
+                                <button class="btn-primary" (click)="claimPendingTokens(item)">Claim</button>
+                            </div>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <a class="text-uppercase" color="primary">Receive Super Like</a>
+            </ng-template>
+            <div fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="10px" ngClass.gt-xs="ml-10">
+                <div *ngFor="let item of likeToyouNft ">
+
+                    <mat-card fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)"
+                        fxFlex.gt-md="0 1 calc(25%-10px)" style="height: 500px; width: 300px ; margin-bottom: 10px;">
+                        <img mat-card-image [defaultImage]="defaultImage" [lazyLoad]="item.FileUrl" class="image">
+                        <mat-card-content>
+                            <h3>{{item.NickName}}</h3>
+                            <h4>{{item.Description}}</h4>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button type="button" class="btn-primary" (click)="gotoshowProfile(item,false)">
+                                view Profile
+                            </button>
+                            <button class="btn-primary" (click)="acceptSuperLike(item)">Accept</button>
+                            <button class="btn-primary" (click)="rejectSuperLike(item)">Reject</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

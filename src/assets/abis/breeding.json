@@ -1,0 +1,1291 @@
+[{
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "formNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "acceptSuperLike",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_tokenAmount",
+            "type": "uint256"
+        }],
+        "name": "addTokenListForBreeding",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "tierId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "changeTireAmount",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_breedId",
+            "type": "uint256"
+        }],
+        "name": "claimNft",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_transferAddress",
+            "type": "address"
+        }],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "parentA",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "parentB",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "breedId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            }
+        ],
+        "name": "BreedParentA",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "parentA",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "parentB",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "breedId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            }
+        ],
+        "name": "BreedParentB",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "breedId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "nftId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ClaimNft",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "formNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "claimPendingTokensFromSuperLike",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "fromAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "time",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            }
+        ],
+        "name": "ClaimPendingTokensFromSuperLike",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "name": "onERC1155BatchReceived",
+        "outputs": [{
+            "internalType": "bytes4",
+            "name": "",
+            "type": "bytes4"
+        }],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes",
+                "name": "",
+                "type": "bytes"
+            }
+        ],
+        "name": "onERC1155Received",
+        "outputs": [{
+            "internalType": "bytes4",
+            "name": "",
+            "type": "bytes4"
+        }],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "formNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "rejectSuperLike",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "_breedId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "specialNft",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "specialtANFTAddress",
+                "type": "address"
+            }
+        ],
+        "name": "sendSpecialNft",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "_breedId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "specialNft",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            }
+        ],
+        "name": "SendSpecialNft",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "parentA",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "parentB",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tier",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "NFTAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "isPaying",
+                "type": "bool"
+            }
+        ],
+        "name": "sendToBreedingRoomFirst",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "tier",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_breedId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "NFTAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bool",
+                "name": "isPaying",
+                "type": "bool"
+            }
+        ],
+        "name": "sendToBreedingRoomSecond",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "sendTokensForSwiping",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_breedId",
+            "type": "uint256"
+        }],
+        "name": "sendTokenToBreeding",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "_breedId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            }
+        ],
+        "name": "SendTokenToBreeding",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "time",
+                "type": "uint256"
+            }
+        ],
+        "name": "SendTokensForSwiping",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+        }],
+        "name": "setAuthAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_timespan",
+            "type": "uint256"
+        }],
+        "name": "setBreedingTime",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_cost",
+            "type": "uint256"
+        }],
+        "name": "setCostForBreeding",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_cost",
+            "type": "uint256"
+        }],
+        "name": "setCostForSuperLike",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+        }],
+        "name": "setGen0NFTAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+        }],
+        "name": "setNftAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+        }],
+        "name": "setRatBitTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_timespan",
+            "type": "uint256"
+        }],
+        "name": "setTimeLimitSuperLike",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+        }],
+        "name": "setTokenBurnAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_timespan",
+            "type": "uint256"
+        }],
+        "name": "setWaitTimeForBreeding",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "formNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "v",
+                "type": "uint8"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "r",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "s",
+                "type": "bytes32"
+            }
+        ],
+        "name": "superLikeNFT",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "fromAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "time",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "bool",
+                "name": "isAccepted",
+                "type": "bool"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            }
+        ],
+        "name": "SuperLikeResponse",
+        "type": "event"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+        }],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_breedId",
+            "type": "uint256"
+        }],
+        "name": "withdrawalNft",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "breedId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "user",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "nftId",
+                "type": "uint256"
+            }
+        ],
+        "name": "WithdrawalNft",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "fromNftId",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "toNftId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "fromAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "time",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "toNftAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "costForSuperLike",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "seed",
+                "type": "uint256"
+            }
+        ],
+        "name": "superLike",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "amountForCarrotTier",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "authAddress",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "breedId",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "name": "breedInfoList",
+        "outputs": [{
+                "internalType": "uint256",
+                "name": "breedId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "parentA",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "ownerOfParentA",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "parentANFTAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "ownerOfParentB",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "parentBNFTAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "parentB",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "costParentA",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "costParentB",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "startTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "endTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "maxtier",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "breedingTime",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "breedingTokenListId",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "parentA",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "parentB",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tier",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "isPaying",
+                "type": "bool"
+            }
+        ],
+        "name": "calculateCost",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_breedId",
+            "type": "uint256"
+        }],
+        "name": "checkValidBid",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "costForBreeding",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "costForSuperLike",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "Gen0NFTAddress",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "isBreeding",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "_breedId",
+            "type": "uint256"
+        }],
+        "name": "isBreedingStart",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "nftAddress",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "percentageForGenGap",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "ratBitTokens",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "sendSpecialNftAmount",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "bytes4",
+            "name": "interfaceId",
+            "type": "bytes4"
+        }],
+        "name": "supportsInterface",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "name": "tierList",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "timeLimitToRespond",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "tokenAmountForSwiping",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "tokenBurnAddress",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "name": "TokenListForBreedingInfo",
+        "outputs": [{
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "tokenAmount",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "transferAddress",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "waitForPartnerTime",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]

@@ -1,0 +1,111 @@
+<!-- 
+
+
+
+
+
+
+<div class="flex h-100 wp100 align-center">
+    <div class="wp100 justify-center">
+        <div>
+            <div class="heading text-white flex-col">
+                <h3 class="text-bold text-uppercase text-center mb50">select your breeding match</h3>
+            </div>
+            
+            <section id="landing-nfts" class="match">
+                <section class="landing-carousel">
+                    <swiper [config]="config" (activeIndexChange)="onIndexChange($event)" (slideChange)="onIndexChange($event)" (realIndexChange)="onIndexChange($event)">
+                        <ng-container *ngFor="let slide of nftCards; index as i">
+                            
+                                <ng-template swiperSlide>
+                                    <div class="nft-image-container" >
+                                       <a (click)="gotoYourMatch(slide)">
+                                        <img src="{{slide.FileUrl}}" alt="{{slide.NickName}}">
+                                       </a>
+                                    </div>
+                                    
+                                    <div class="mt20">
+                                        <h4 class="title text-white head">{{slide.NickName}}</h4>
+                                    </div>
+                                    <div class="title flex-col mt-3  align-items-center text-center">
+                                       <app-super-like [toNFTId]="slide.NftId" [NftAddress]="slide.NftAddress"></app-super-like>
+                                        <div class="social-media ml-4 mt-4">
+                                            <button type="button" class="btn-primary" (click)="gotoshowProfile(slide.NftId)">
+                                                view Profile
+                                            </button>
+                                        </div>             
+                                    </div>
+                                </ng-template>
+                        </ng-container>
+                    </swiper>
+                </section>
+            </section>
+            
+            
+       
+        </div> 
+             
+    </div>   
+</div>
+ -->
+ <div class="limit-text" *ngIf="isTimer">
+  <h1 style="color: aliceblue;">Your Nft Will come back 00:{{counter}}</h1>
+ </div>
+ <div *ngIf="!isTimer">
+ <div class="limit-text" *ngIf="!yourCrossLimit">
+   <h3>you cross daily limit</h3>
+   <div>
+     <button class="btn-primary" (click)="viewMore()">View More</button>
+   </div>
+ </div>
+ </div>
+<div class="tinder" [hidden]="!cards?.length" [ngClass]="{'disableDiv': isDisabled}" *ngIf="yourCrossLimit">
+
+  <div class="tinder--status">
+
+    <!-- <div [style.opacity]="crossVisible? '1':'0'">
+        <svg width="200px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <svg:path
+            d="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z"
+            fill="#CDD6DD" />
+        </svg>
+      </div>
+  
+      <div [style.opacity]="heartVisible? '1':'0'">
+        <svg width="200px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <svg:path
+            d="M349.6 64c-36.4 0-70.7 16.7-93.6 43.9C233.1 80.7 198.8 64 162.4 64 97.9 64 48 114.2 48 179.1c0 79.5 70.7 143.3 177.8 241.7L256 448l30.2-27.2C393.3 322.4 464 258.6 464 179.1 464 114.2 414.1 64 349.6 64zm-80.8 329.3l-4.2 3.9-8.6 7.8-8.6-7.8-4.2-3.9c-50.4-46.3-94-86.3-122.7-122-28-34.7-40.4-63.1-40.4-92.2 0-22.9 8.4-43.9 23.7-59.3 15.2-15.4 36-23.8 58.6-23.8 26.1 0 52 12.2 69.1 32.5l24.5 29.1 24.5-29.1c17.1-20.4 43-32.5 69.1-32.5 22.6 0 43.4 8.4 58.7 23.8 15.3 15.4 23.7 36.5 23.7 59.3 0 29-12.5 57.5-40.4 92.2-28.8 35.7-72.3 75.7-122.8 122z"
+            fill="#FFACE4" />
+        </svg>
+      </div> -->
+  </div>
+
+  <div class="tinder--cards" (pan)="handlePan($event)" (panend)="handlePanEnd($event)">
+    <div #tinderCard class="tinder--card" (transitionend)="handleShift()" *ngFor="let card of cards; let i = index"
+      [ngStyle]="{ zIndex: cards?.length - i, transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)' }">
+
+
+      <img #tinderCardImage  [defaultImage]="defaultImage" [lazyLoad]="card.FileUrl" (load)="tinderCardImage.style.opacity = '1'" width="100%">
+
+      <h3>{{ card?.NickName }}</h3>
+      <p>{{ card?.Description }}</p>
+      <p>{{ card?.NftId }}</p>
+    </div>
+    <div class="tinder--buttons">
+      <button class="icon-change" matTooltip="View Profile" (click)="userClickedButton($event , false,false,true)">
+        <img class="icon-change" src="assets/siteimage/viewProfile.png" width="50px" alt="">
+       </button>
+        <button (click)="userClickedButton($event, false ,false,false)" matTooltip="Dislike">
+          <img class="icon-change" src="assets/siteimage/danger.jpg" width="50px" alt="">
+        </button>
+        <button (click)="userClickedButton($event, true ,false,false)" matTooltip="Super Like">
+          <img class="icon-change" src="assets/siteimage/yellowfire.jpg" width="50px" alt="">
+        </button>
+    
+        <button (click)="userClickedButton($event,false, true,false)" matTooltip="Like">
+          <img class="icon-change" src="assets/siteimage/greenlove.jpg" width="50px" alt="">
+        </button>
+        <!-- <button class="btn-primary">View More</button> -->
+      </div>
+    </div>
+  

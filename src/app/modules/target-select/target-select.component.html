@@ -1,0 +1,152 @@
+<div class="waveWrapper banner p-t-0  waveAnimation">
+    <div class="flex-container start-section text-center">
+        <div class="start-section">
+            <div class="heading text-white flex-col">
+                <h3 class="text-bold text-uppercase">Selected target</h3>
+            </div>
+            <div class="flex-containers">
+                <div class="flex-item-left dflex">
+                    <div class="my-profile m10 dinline text-center">
+                        <img *ngIf="yourNft01.type != '.mp4'" src="{{yourNft01.imagePath}}" alt="" class="imgclass">
+                        <video class="video-width" *ngIf="yourNft01.type == '.mp4'" controls>
+                            <source src="{{yourNft01.imagePath}}" type="video/mp4">
+                        </video>
+                        <div class="white-background">
+                            <div class="left heading p-l-5" style="font-size: 8px;">
+                                <p class="mb-0">Rarity</p><p class="m-t-0 mb-0">Score</p>
+                            </div>
+                            <div class="right dflex m-l-10">
+                                <img src="assets/siteimage/redchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/redchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/blackchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/blackchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/blackchilli1.png" width="20px" alt="">
+                            </div>
+                        </div>
+                        <div class="my-profile-name m5">
+                            <div class="my-profile">
+                                <button type="button" class="btn btn-outline-warning">Harry Buts</button>
+                            </div>
+                        </div>
+                        <div class="flex-col mt-3 align-items-center text-center">
+                          
+                            <app-super-like [toNFTId]="yourNft01.NftId" [NftAddress]="yourNft01.NftAddress"></app-super-like>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-item-right dflex">
+                    <div class="other-profile m10 dinline text-center">
+                        <img *ngIf="OtherNft.type != '.mp4'" src="OtherNft.FileUrl" alt="" class="imgclass">
+                        <video *ngIf="OtherNft.type == '.mp4'" controls>
+                            <source src="{{OtherNft.FileUrl}}" type="video/mp4">
+                        </video>
+                        <div class="white-background">
+                            <div class="left heading p-l-5" style="font-size: 8px;">
+                                <p class="mb-0">Rarity</p><p class="m-t-0 mb-0">Score</p>
+                            </div>
+                            <div class="right dflex m-l-10">
+                                <img src="assets/siteimage/redchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/redchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/blackchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/blackchilli1.png" width="20px" alt="">
+                                <img src="assets/siteimage/blackchilli1.png" width="20px" alt="">
+                            </div>
+                        </div>
+                        <div class="other-profile-name m5">
+                            <div class="other-profile">
+                                <button type="button" class="btn btn-outline-warning">Harry Buts</button>
+                            </div>
+                        </div>
+                        <div class="flex-col mt-3 align-items-center text-center">
+                            <app-super-like [toNFTId]="OtherNft.NftId" [NftAddress]="OtherNft.NftAddress"></app-super-like>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="flex-item-left">2</div>
+                <div class="flex-item-middle">1</div> -->
+                <!-- <div class="flex-item-right">2</div>
+                <div class="flex-item-left">1</div>
+                <div class="flex-item-right">2</div>
+                <div class="flex-item-left">1</div> -->
+            </div>
+
+
+            <!-- <div class="info-section dflex">
+                <div class="first-section">
+                    <div class="heading text-white m-b-30 flex-col">
+                        <p class="text-bold text-uppercase">Traits</p>
+                    </div>
+                    <div class="paraghraph align-items-center m-l-90 dflex">
+                        <div class="left-side text-end">
+                            <p class="text-uppercase m0">colour</p>          
+                            <p class="text-uppercase">background</p>         
+                            <p class="text-uppercase m0">mouth</p>
+                            <p class="text-uppercase">smoke</p>
+                            <p class="text-uppercase m0">eyes</p>
+                            <p class="text-uppercase">hat/hair</p>
+                            <p class="text-uppercase m0">clothes</p>
+                            <p class="text-uppercase">shoes</p>
+                        </div>
+                        <div class="right-side text-start">
+                            <p class="text-uppercase m0">ocean</p>                   
+                            <p class="text-uppercase">fair</p>
+                            <p class="text-uppercase m0">black lady</p>
+                            <p class="text-uppercase">.</p>
+                            <p class="text-uppercase m0">swag strippled</p>
+                            <p class="text-uppercase ">pink hat hair red</p>
+                            <p class="text-uppercase m0">striped purple</p>
+                            <p class="text-uppercase">purple lady</p>
+                        </div>
+                    </div>
+                    <div class="heading text-white flex-col m-t-20">
+                        <p class="text-bold m-b-0 text-uppercase para">character....json</p>
+                        <p class="text-bold m-t-0 text-uppercase para">09849.99838.9329</p>
+                    </div>
+                    <div class="heading text-white flex-col m-t-10">
+                        <p class="text-bold m-b-0 text-uppercase para">Price</p>
+                        <p class="text-bold m-t-0 text-uppercase para">100010001000.rabbits</p>
+                    </div>
+                </div>
+                <div class="second-section">
+                    <div class="heading text-white m-b-30 flex-col">
+                        <p class="text-bold text-uppercase">Traits</p>
+                    </div>
+                    <div class="paraghraph align-items-center m-l-90 dflex">
+                        <div class="left-side text-end">
+                            <p class="text-uppercase m0">colour</p>          
+                            <p class="text-uppercase">background</p>         
+                            <p class="text-uppercase m0">mouth</p>
+                            <p class="text-uppercase">smoke</p>
+                            <p class="text-uppercase m0">eyes</p>
+                            <p class="text-uppercase">hat/hair</p>
+                            <p class="text-uppercase m0">clothes</p>
+                            <p class="text-uppercase">shoes</p>
+                        </div>
+                        <div class="right-side text-start">
+                            <p class="text-uppercase m0">ocean</p>                   
+                            <p class="text-uppercase">fair</p>
+                            <p class="text-uppercase m0">black lady</p>
+                            <p class="text-uppercase">.</p>
+                            <p class="text-uppercase m0">swag strippled</p>
+                            <p class="text-uppercase ">pink hat hair red</p>
+                            <p class="text-uppercase m0">striped purple</p>
+                            <p class="text-uppercase">purple lady</p>
+                        </div>
+                    </div>
+                    <div class="heading text-white flex-col m-t-20">
+                        <p class="text-bold m-b-0 text-uppercase para">character....json</p>
+                        <p class="text-bold m-t-0 text-uppercase para">09849.99838.9329</p>
+                    </div>
+                    <div class="heading text-white flex-col m-t-10">
+                        <p class="text-bold m-b-0 text-uppercase para">Price</p>
+                        <p class="text-bold m-t-0 text-uppercase para">100010001000.rabbits</p>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+    </div>
+
+</div>

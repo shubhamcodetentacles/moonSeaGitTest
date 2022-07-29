@@ -1,0 +1,32 @@
+
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+  <div *ngIf="!value">
+  <div class="text-center" *ngIf="!dt">
+    <mat-spinner [diameter]="50" style="margin-top: 55px; margin-left: auto; margin-right: auto;"></mat-spinner>
+    <h4>Getting Approval...</h4>
+  </div>
+  <div class="text-center" *ngIf="dt">
+    <mat-spinner [diameter]="50" style="margin-top: 55px; margin-left: auto; margin-right: auto;"></mat-spinner>
+    <h4>Transaction is Submitting...</h4>
+  </div>
+</div>
+<div *ngIf="value">
+    <!-- <h3>THE RA8BITHOLE</h3>
+    <mat-spinner [diameter]="50" style="margin: auto;margin-bottom: 16px;"></mat-spinner>
+    <h3>Wallet Confirmation</h3>
+    <div class="flex-parent jc-center">
+      <button class="bt" type="button">...</button>
+    </div>
+    <h6>check carefully  bla bla bla</h6> -->
+    <div class="flex-parent1 jc-center1">
+    <img [defaultImage]="defaultImage" [lazyLoad]="data?.mynft?.details?.image" height="200px" width="200px" style="margin-left:40px;margin-top: 5px;">
+    </div>
+    <p style="text-align: center; color: #FFFF;">{{data?.mynft?.details?.name}}</p>
+    <h4>Waiting For Partner: {{day+" day"+" "+hour+":"+minute+":"+ second}}</h4>
+    <h4>Breeding Time:{{day}}</h4>
+    <div class="flex-parent1 jc-center1">
+      <button class="bt1" type="button" (click)="sendToBreedingRoom()">Start Breeding</button>
+    </div>
+</div>

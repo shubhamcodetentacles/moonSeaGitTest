@@ -1,0 +1,56 @@
+<div class="flex h-100 wp100 align-center">
+  <div class="wp100 justify-center">
+    <div>
+      <div class="heading text-white flex-col maintop">
+        <h3 class="text-bold text-uppercase text-center mb50 fm">
+          Your Matches
+        </h3>
+      </div>
+
+      <section id="landing-nfts" class="match">
+        <!-- This is the 3D Owl Carousel -->
+        <section class="landing-carousel">
+          <swiper
+            [config]="config"
+            (activeIndexChange)="onIndexChange($event)"
+            (slideChange)="onIndexChange($event)"
+            (realIndexChange)="onIndexChange($event)"
+          >
+            <ng-container *ngFor="let slide of nftCards; index as i">
+              <ng-template swiperSlide>
+                <div class="nft-image-container">
+                  <div
+                    class="nft-image-container"
+                    (click)="gotoYourMatch(slide)"
+                  >
+                  <img class="img" [defaultImage]="defaultImage" [lazyLoad]=" slide.FileUrl" alt="{{ slide.NickName }}" />
+                  </div>
+                </div>
+
+                <div class="mt20">
+                  <h4 class="title text-white head">{{ slide.NickName }}</h4>
+                </div>
+                <div class="title flex-col mt-3 align-items-center text-center">
+                  <app-super-like
+                    [toNFTId]="slide.NftId"
+                    [NftAddress]="slide.NftAddress"
+                    [hideLikeButton]="false"
+                  ></app-super-like>
+                  <div class="social-media ml-4 mt-4">
+                    <button
+                      type="button"
+                      class="btn-primary"
+                      (click)="gotoshowProfile(slide.NftId)"
+                    >
+                      viewProfile 
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </swiper>
+        </section>
+      </section>
+    </div>
+  </div>
+</div>

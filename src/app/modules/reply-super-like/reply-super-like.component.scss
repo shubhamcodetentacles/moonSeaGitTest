@@ -1,0 +1,34 @@
+.centerY {
+  margin-top: 100px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+img {
+  height: 170px;
+  width: 300px;
+}
+mat-card .card1{
+  margin-bottom: 10px;
+  height: 400px;
+  width: 300px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+.mat-tab-labels {
+  justify-content: center;
+}
+
+  ::ng-deep.mat-tab-labels {
+    display: flex;
+    justify-content: space-around;
+}

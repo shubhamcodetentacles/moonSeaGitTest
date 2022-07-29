@@ -1,0 +1,40 @@
+ <div class="waveWrapper banner waveAnimation" >
+  <div class="flex-container text-center">
+    <div class="wp100 wp10">
+      <div class="heading text-white" *ngIf="!buyNft">
+        <h3 class="text-bold text-uppercase">Select Your nft</h3>
+      </div>
+     <div *ngIf="buyNft">
+          <h3 class="text-bold text-white text-uppercase">Your don't have nft</h3>
+          <a class="btn-primary" href="https://moonboxes.io/artist/0x66A7B9f608378e59105022aB00b0F541666e8c4d">Buy Nft</a>
+     </div>
+      <section id="landing-nfts" class="landing-nfts" *ngIf="!buyNft">
+        <section class="landing-carousel">
+          <swiper
+            [config]="config"
+            (activeIndexChange)="onIndexChange($event)"
+            (slideChange)="onIndexChange($event)"
+            (realIndexChange)="onIndexChange($event)"
+          >
+            <ng-container *ngFor="let slide of nftCards; index as i">
+              <ng-template swiperSlide >
+                <div
+                  class="nft-image-container"
+                  (click)="gotonftDetails(slide)"
+                >
+                    <img [defaultImage]="defaultImage" [lazyLoad]="slide.imagePath" alt="{{ slide?.name }}" />
+                </div>
+                <ng-container>
+                  <div class="mt20">
+                    <h4 class="text-white head title ">{{ slide?.name }}</h4>
+                  </div>
+                </ng-container>
+              
+              </ng-template>
+            </ng-container>
+          </swiper>
+        </section>
+      </section>
+    </div>
+  </div>
+</div> 

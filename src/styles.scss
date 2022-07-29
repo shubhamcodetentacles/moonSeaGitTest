@@ -1,0 +1,948 @@
+/*********************************************************/
+// Sawta Custom Code
+/*********************************************************/
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: #5b5266;
+}
+
+body {
+  background-color: #090d16;
+  font-family: "Montserrat", "Sans";
+  font-weight: 500;
+  letter-spacing: 0.0625rem;
+  background: url(assets/img/BreedMobileBack.jpg);
+  background-size: contain;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 770px;
+  margin: 10rem auto;
+  // height: 100%;
+  .intro {
+    width: 100%;
+    margin-right: 20px;
+    margin-left: 20px;
+    justify-content: center;
+    .title {
+      text-align: center;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+.btn-outline-primary {
+  color: #ffffff;
+  text-align: center;
+  border: 3px solid white;
+  font-family: "LuloCleanOne-Bold";
+  width: 100%;
+  font-weight: bold;
+  background: transparent;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 0.7rem 1rem;
+}
+// ::ng-deep .mat-dialog-container {
+//     background: grey !important;
+//  }
+// .btn-primary {
+//     color: #ffffff;
+//     text-align: center;
+//     // border: 3px solid white;
+//     font-family: "LuloCleanOne-Bold";
+//     // width: 100%;
+//     font-weight: bold;
+//     font-size: 1rem;
+//     // border-radius: 30px;
+//     // padding: 0.7rem 1rem;
+//     background: #fdb913;
+//     padding: 15px 25px;
+//     // font-size: 24px;
+//     cursor: pointer;
+//     text-align: center;
+//     text-decoration: none;
+//     // outline: none;s
+//     color: #fff;
+//     // background-color: #4CAF50;
+//     border: none;
+//     width:100%;
+//     border-radius: 15px;
+//     box-shadow: 0 9px #999;
+
+// }
+.btn-primary {
+  color: #ffffff;
+  text-align: center;
+  font-family: "LuloCleanOne-Bold";
+  font-weight: bold;
+  font-size: 1rem;
+  background: #fdb913;
+  padding: 15px 25px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border: none;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: none;
+  margin-bottom: 15px;
+  border: 0.1rem solid rgb(250, 250, 250);
+  border-radius: 5rem;
+}
+.btn-primary:hover {
+  background-color: #ac8011;
+}
+.btn-primary:active {
+  background-color: #f7ec5d;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.btn-secondary {
+  color: #ffffff;
+  text-align: center;
+  border: 3px solid white;
+  font-family: "LuloCleanOne-Bold";
+  width: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 0.7rem 1rem;
+  background: #000;
+}
+@media only screen and (max-width: 62.5rem) {
+  .inner .intro {
+    padding-top: 250px;
+    padding-bottom: 100px;
+  }
+}
+
+.properties {
+  color: white;
+  font-size: 9px;
+  margin-bottom: 5px;
+  font-family: "LuloCleanOne-Bold";
+  p {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .full p {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/*********************************************************/
+// Sawta Custom Code End
+/*********************************************************/
+
+#successMsg {
+  position: fixed;
+  z-index: 100000000;
+  // right: 5px;
+  font-family: "LuloCleanOne-Bold";
+  background: green;
+  border-left: 5px solid white;
+  // top: 68px;
+  font-size: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  // right: 8px;
+  bottom: 0px;
+  right: 15px;
+  margin: 0 0 15px 0;
+}
+#error {
+  position: fixed;
+  z-index: 100000000;
+  // top: 68px;
+  background: #d71920;
+  font-size: 10px;
+  border-radius: 10px;
+  border-left: 5px solid white;
+  font-family: "LuloCleanOne-Bold";
+  color: white;
+  padding: 20px;
+  // right: 8px;
+  bottom: 0px;
+  right: 15px;
+  margin: 0 0 15px 0;
+}
+
+.btn-outline-warning {
+  color: white;
+  /* height: 22px; */
+  width: 100%;
+  padding: 10px;
+  background: black;
+  border: 1px solid white;
+  font-family: "somybmp01_7";
+  font-size: 9px;
+  border-radius: 26px;
+}
+
+.waveWrapper {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  height: 100%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  // overflow-y: scroll;
+}
+
+.nav-wrapper {
+  display: flex;
+  position: sticky;
+  left: 0px;
+  top: 0;
+  bottom: auto;
+  align-items: center;
+  right: 0;
+  justify-content: space-between;
+  z-index: 100;
+  padding: 1rem;
+  // background: #000;
+}
+
+.logo-container {
+  //   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-tabs {
+  display: flex;
+  font-weight: 600;
+  font-size: 10px;
+  font-family: "LuloCleanOne-Bold";
+  color: white;
+  list-style: none;
+}
+.letterspace {
+  h2 {
+    letter-spacing: 0.3rem;
+    font-weight: bold;
+  }
+}
+.nav-tab:not(:last-child) {
+  padding: 1px 9px;
+}
+
+.nav-tab:last-child {
+  padding: 0px 0 0 5px;
+}
+
+.nav-tab,
+.menu-btn {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .nav-container {
+    position: fixed;
+    display: none;
+    overflow-y: auto;
+    z-index: -1;
+    top: 0;
+
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background: #fff;
+    box-shadow: -1px 0 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-tabs {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 80px;
+    width: 100%;
+  }
+
+  .nav-tab:not(:last-child) {
+    padding: 20px 25px;
+    margin: 0;
+    border-right: unset;
+    border-bottom: 1px solid #f5f5f5;
+  }
+
+  .nav-tab:last-child {
+    padding: 15px 25px;
+  }
+
+  .menu-btn {
+    // position: relative;
+    // display: block;
+    // margin: 0;
+    width: 45px;
+    // height: 36px;
+    cursor: pointer;
+    // z-index: 2;
+    // padding: 10px;
+    // border-radius: 4px;
+  }
+
+  .menu-btn .menu {
+    background: white;
+    display: block;
+    width: 25px;
+    /* color: white; */
+    height: 2px;
+    /* border-radius: 2px; */
+    /* background: #111; */
+  }
+
+  .menu-btn .menu:nth-child(2) {
+    margin-top: 10px;
+    opacity: 1;
+  }
+
+  .menu-btn .menu:nth-child(3) {
+    margin-top: 10px;
+  }
+
+  #menuToggle:checked + .menu-btn .menu {
+    transition: transform 0.2s ease;
+  }
+
+  #menuToggle:checked + .menu-btn .menu:nth-child(1) {
+    transform: translate3d(0, 6px, 0) rotate(45deg);
+  }
+
+  #menuToggle:checked + .menu-btn .menu:nth-child(2) {
+    transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+    opacity: 0;
+  }
+
+  #menuToggle:checked + .menu-btn .menu:nth-child(3) {
+    transform: translate3d(0, -6px, 0) rotate(-45deg);
+  }
+
+  #menuToggle:checked ~ .nav-container {
+    z-index: 1;
+    display: flex;
+    animation: menu-slide-left 0.3s ease;
+  }
+  @keyframes menu-slide-left {
+    0% {
+      transform: translateX(200px);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+.swiper-slide {
+  width: 277px !important;
+}
+
+.left-side {
+  width: 50%;
+}
+
+.right-side {
+  width: 50%;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (max-width: 1024px) {
+  .inner {
+    margin: -9rem auto;
+  }
+}
+
+// *******************
+// *******************
+// *******************
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap");
+
+.mb1 {
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+}
+h3.main-title.mb50.main-titlec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 4rem;
+  height: 1.8rem;
+  margin: 0 1rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(110, 20, 20);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border: 0.15rem solid #fff;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 80%;
+  width: 35%;
+  left: 4px;
+  bottom: 2.5px;
+  background-color: #54c734;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #000000;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+p.text-uppercase.check {
+  font-family: "Dosis";
+  letter-spacing: 0.1rem;
+}
+
+.pb {
+  margin-bottom: -0.6rem !important;
+}
+
+// home>select your nft>
+.mat-typography h3 {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+.p8 {
+  font-size: 8px;
+  line-height: 0.8rem;
+  margin-bottom: 1rem;
+}
+.btn-outline-primary {
+  color: #ffffff;
+  text-align: center;
+  border: 2px solid white;
+  font-family: "LuloCleanOne-Bold";
+  width: 100%;
+  font-weight: bold;
+  background: transparent;
+  font-size: 1rem;
+  border-radius: 30px;
+  padding: 0.7rem 1rem;
+}
+
+// *******
+nft-image-container video,
+.nft-image-container img.img {
+  border: 2px solid #fff;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-height: 212px !important;
+  max-width: 306px !important;
+  min-height: 300px !important;
+  object-fit: cover;
+}
+ft-image-container video,
+.nft-image-container img.img {
+  display: flex;
+  height: 100%;
+  max-height: 159px !important;
+  min-width: 149px !important;
+  min-height: 250px !important;
+  object-fit: cover;
+}
+
+// *******
+
+.mat-typography h3.fm {
+  font: 400 21px/28px Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  margin-top: 0rem !important;
+  margin-bottom: 5rem;
+}
+
+.btn-outline-primaryp {
+  color: #000000;
+  border: 3px solid rgb(255, 253, 253);
+  font-family: "LuloCleanOne-Bold";
+  background: #fff;
+}
+.nav-tabs {
+  font-family: "Dosis", sans-serif !important;
+  font-style: normal;
+  letter-spacing: 0.12rem;
+  font-size: 0.8rem !important;
+}
+.fc {
+  font-family: "somybmp01_7" !important;
+}
+
+.mat-typography h3.fm {
+  font: 400 21px/28px Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  margin-top: 15rem;
+}
+.navbar-brand a {
+  font-weight: normal !important;
+  font-family: "Dosis", sans-serif !important;
+  font-style: normal;
+  letter-spacing: 0.1rem;
+  font-size: 1.2rem !important;
+  span {
+    color: #d5a641;
+  }
+}
+.nav-wrapper {
+  border-bottom: 0.1rem solid white;
+}
+nft-image-container video,
+.nft-image-container img {
+  display: flex;
+  height: 100%;
+
+  max-height: 161px;
+  min-width: 400px;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+nft-image-container video,
+.nft-image-container img {
+  display: flex;
+  height: 100%;
+  max-height: 159px;
+  min-width: 335px;
+  min-height: 500px;
+  object-fit: cover;
+}
+nft-image-container video,
+.nft-image-container img {
+  display: flex;
+  height: 100%;
+  max-height: 159px;
+  min-width: 335px;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+.match .swiper-slide:last-child .nft-image-container::before {
+  background: #000000d9;
+  content: "";
+  opacity: 0.9;
+  position: absolute;
+  // left: -5rem;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+nft-image-container video,
+.nft-image-container img {
+  display: flex;
+  height: 100%;
+  max-height: 159px;
+  min-width: 248px;
+  min-height: 500px;
+  object-fit: cover;
+}
+.properties p {
+  flex: 0 0 50%;
+  max-width: 50%;
+  margin: 6px;
+}
+.rarity-score.up {
+  background: white;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: -0.5rem 1.2rem;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: 4rem;
+}
+
+.mat-typography h3.aa {
+  font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  margin: 0 0 -8px;
+}
+
+.nft-image-container video,
+.nft-image-container img {
+  border: 2px solid #fff;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-height: 250px;
+  max-width: 250px;
+  min-height: 351px;
+  object-fit: cover;
+}
+ft-image-container video,
+.nft-image-container img {
+  display: flex;
+  height: 100%;
+  max-height: 159px;
+  min-width: 355px;
+  min-height: 500px;
+  object-fit: cover;
+}
+.mat-typography h3 {
+  font: 400 21px/28px Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+}
+.main-titlec,
+p.text-bold.text-uppercase.trai {
+  font-family: "Dosis", sans-serif !important;
+}
+button.flex1.btn-secondary.p12.secondaryfont {
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem !important;
+}
+.propertiesc {
+  font-family: "Dosis", sans-serif !important;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  // margin-bottom: 35px !important;
+}
+html {
+  font-size: 80%;
+}
+.heading.text-white.flex-col.maintop {
+  margin-top: 5rem !important;
+}
+
+@media (max-width: 1092px) {
+  .nav-link {
+    font-size: 0.55rem;
+    &.rl {
+      font-size: 1rem;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .inner .intro1 {
+    padding: 15rem 0rem 2rem 0rem;
+  }
+  .inner.inn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 770px;
+    margin: 10rem auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .nav-link {
+    font-size: 0.4rem;
+    &.rl {
+      font-size: 1rem;
+    }
+  }
+  .wp10 {
+    width: 100%;
+    margin-top: 10rem;
+  }
+}
+
+@media (max-width: 810px) {
+  .landing-nfts {
+    padding-top: 1px !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .nav-link {
+    font-size: 0.35rem;
+    &.rl {
+      font-size: 1rem;
+    }
+  }
+
+  .wp10 {
+    width: 100%;
+    margin-top: 8rem;
+  }
+
+  .nft-image-container video,
+  .nft-image-container img {
+    border: 2px solid #fff;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    max-height: 199px;
+    max-width: 169px;
+    min-height: 160px;
+    object-fit: cover;
+  }
+  ft-image-container video,
+  .nft-image-container img {
+    display: flex;
+    height: 100%;
+    max-height: 159px;
+    min-width: 237px;
+    min-height: 500px;
+    object-fit: cover;
+  }
+  .mat-typography h3.fm {
+    font: 400 21px/28px Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    margin-top: 10rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mat-typography h3.fm {
+    margin-bottom: 1rem;
+  }
+  .start-section {
+    padding-top: 0px;
+  }
+
+  .inner.inn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 770px;
+    margin: -5rem auto;
+  }
+
+  .properties {
+    color: white;
+    font-size: 9px;
+    margin-bottom: 5px;
+    font-family: "LuloCleanOne-Bold";
+    text-align: center !important;
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+  .properties.proper {
+    color: white;
+    font-size: 9px;
+    margin-bottom: 5px;
+    font-family: "LuloCleanOne-Bold";
+    text-align: center !important;
+    display: flex;
+    align-items: center;
+    margin-left: -2rem;
+  }
+  .properties p {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin: 6px;
+    margin-bottom: -0.4rem;
+  }
+  .mat-typography h3.aa {
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 0.9rem;
+  }
+  .flex-container.text-center.hspace {
+    margin-top: 4rem;
+  }
+  .rool {
+    // background: rgb(202, 190, 190);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rool1 {
+    // background: rgb(175, 57, 57);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -2rem !important;
+  }
+
+  .inner .intro {
+    padding-top: 223px;
+    padding-bottom: 100px;
+    padding: 15rem 0rem;
+    padding-bottom: 1rem;
+    overflow-x: hidden;
+  }
+
+  .inner .intro {
+    width: 100%;
+    margin-right: 18px;
+    margin-left: 16px;
+    justify-content: center;
+  }
+  .nft-box {
+    display: flex;
+    position: relative;
+    width: 100%;
+    border: 3px solid white;
+    margin-bottom: 0rem;
+    margin-top: -1.5rem;
+    height: auto !important;
+    background: #000;
+  }
+  .properties {
+    color: white;
+    font-size: 9px;
+    margin-bottom: 5px;
+    font-family: "LuloCleanOne-Bold";
+    text-align: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .properties {
+    color: white;
+    font-size: 9px;
+    margin-bottom: 5px;
+    font-family: "LuloCleanOne-Bold";
+    text-align: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 0 3rem;
+    width: 100%;
+  }
+  .properties {
+    color: white;
+    font-size: 9px;
+    margin-bottom: 5px;
+    font-family: "LuloCleanOne-Bold";
+    text-align: center !important;
+    display: flex;
+    align-items: center;
+  }
+
+  .text-right {
+    text-align: right;
+    border-bottom: 0.1rem solid white;
+  }
+
+  .propertiesc {
+    font-family: "Dosis", sans-serif !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 30px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .properties p {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .nav-link {
+    font-size: 0.4rem;
+    &.rl {
+      font-size: 1rem;
+    }
+  }
+
+  .wp10 {
+    width: 100%;
+    margin-top: 0rem;
+  }
+
+  .mat-typography h3.fm {
+    font: 400 21px/28px Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    margin-top: 7rem;
+  }
+
+  .mr1r {
+    margin: 0 1rem;
+  }
+  .inner .introc {
+    margin-top: -5rem;
+  }
+
+  button.flex1.btn-secondary.p12.secondaryfont {
+    font-family: "Dosis", sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem !important;
+    padding: 0.5rem 2rem !important;
+  }
+  .propertiesc {
+    font-family: "Dosis", sans-serif !important;
+    text-transform: uppercase;
+    font-size: 0.6rem !important;
+    font-weight: 600;
+    margin-bottom: 18px !important;
+  }
+  .properties p {
+    margin-bottom: -0.5rem;
+  }
+}
+// home>select your nft>
+
+// ***************
+// ***************
+// ***************
