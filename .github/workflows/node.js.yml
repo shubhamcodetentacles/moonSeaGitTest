@@ -32,6 +32,7 @@ jobs:
     - name: Deploy to Staging
       uses: actions/checkout@v2
     - name: Deploy to Stagings
+      uses: Techie-Pi/node-vps-deployment@main
       with:
         remote-path: "C:/inetpub/wwwroot/testgit" 
         host: ${{ secrets.HOST }}
