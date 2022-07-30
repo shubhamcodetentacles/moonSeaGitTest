@@ -31,7 +31,7 @@ jobs:
     - run: npm run build 
     - name: Deploy to Staging
       uses: actions/checkout@v2
-    - name: Deploy to Staging
+    - name: Deploy to Stagings
       with:
         remote-path: "C:/inetpub/wwwroot/testgit" 
         host: ${{ secrets.HOST }}
