@@ -30,7 +30,7 @@ jobs:
     - run : npm install --force
     - run: npm run build 
     - name: Deploy to Stagings
-      uses: Techie-Pi/node-vps-deployment@main
+      uses: Techie-Pi/node-vps-deployment@v1.1
       with:
         remote-path: "C:/inetpub/wwwroot/testgit" 
         host: ${{ secrets.HOST }}
