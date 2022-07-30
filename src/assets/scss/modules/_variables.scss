@@ -19,22 +19,23 @@ $md-header: toRem(1150px);
 $sidebar-width: toRem(64px);
 
 // Colors
-$primary: #d5a642;
-$secondary: #ca9800;
+$primary: #50aac5;
+$secondary-dark: #2092b5;
+$secondary: #c5e3ec;
 
 $body-bg-color: #090d16;
 
-$black: #000000;
 $white: #ffffff;
 
-$success: #2eca8b;
+$success: #00aa3e;
 $warning: #f17425;
 $info: #17a2b8;
-$danger: #e43f52;
+$danger: #ff0000;
 $dark: #3c4858;
-$black_lighter: #161c2d;
+$black: #090d16;
 $muted: #8492a6;
 $light: #f8f9fc;
+$transparent: transparent;
 
 // fonts
 $primary-font: "Montserrat";
@@ -48,7 +49,7 @@ $medium: 500;
 $semi-bold: 600;
 $bold: 700;
 $extra-bold: 800;
-$highest_bold: 900;
+$black-bold: 900;
 
 $font-xs: 12px;
 $font-sm: 14px;
@@ -58,7 +59,7 @@ $font-lg: 20px;
 
 $font-size-base: toRem($primary-fs);
 $font-weight-base: $medium;
-$font-color-base: $dark;
+$font-color-base: $primary;
 $font-family-base: $primary-font, "Sans";
 $font-family-secondary: $secondary-font, "Arial";
 
