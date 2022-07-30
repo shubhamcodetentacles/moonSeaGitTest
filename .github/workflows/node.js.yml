@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     strategy:
       matrix:
@@ -29,13 +29,18 @@ jobs:
     - run: npm install -g @angular/cli
     - run : npm install --force
     - run: npm run build 
-    env:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
+    - name: Deploy to Staging
+      uses: actions/checkout@v2
+    - name: Deploy to Staging
+      with:
+        remote-path: "C:/inetpub/wwwroot/testgit" 
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        port: 2080
+        password:  ${{ secrets.USERNAME }}
+        pm2-id: "staging"
      
-        source: "."
-        target: "/var/www/mywebsite"
 
+ 
+   
     
