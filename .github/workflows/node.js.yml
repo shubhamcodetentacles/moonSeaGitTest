@@ -33,8 +33,7 @@ jobs:
     - name: Deploy to Stagings
       uses: actions/checkout@v1
 
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+    
     
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -42,9 +41,7 @@ jobs:
         server: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.SSHKEY }}
-        source: "."
         
-     
 
  
    
