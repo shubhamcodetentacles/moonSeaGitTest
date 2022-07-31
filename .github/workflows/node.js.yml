@@ -42,7 +42,7 @@ jobs:
         server: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.SSHKEY }}
-        local-dir: ./our-awesome-theme/
+        source: "."
         
      
 
