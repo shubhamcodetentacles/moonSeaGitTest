@@ -1,50 +1,56 @@
-import { NgModule ,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { BrowserModule, HammerModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { Injectable, NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './layout/home/home.component';
-import { SwiperModule } from 'swiper/angular';
-import { ConnetmetamaskService } from './core/services/metamask/connetmetamask.service';
-import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthInterceptor } from './core/interceptor/auth.interceptor';
-import {FlexLayoutModule} from '@angular/flex-layout'
-import {LazyLoadImageModule , LAZYLOAD_IMAGE_HOOKS , ScrollHooks} from 'ng-lazyload-image';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { DisconnectModelComponent } from './layout/disconnect-model/disconnect-model.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { GtagModule } from 'angular-gtag';
+import { MoonbaseModule } from './components/moonbase/moonbase.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { NavModule } from './components/moonbase/nav/nav.module';
+import { SidebarModule } from './components/base/sidebar/sidebar.module';
+import { CommonModule } from '@angular/common';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
+
+
+@Injectable()
+export class HammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    'swipe': { direction: Hammer.DIRECTION_ALL }
+  };
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
-    // SuperLikeComponent,
-    DisconnectModelComponent,
-    
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
-    SwiperModule,
+    BrowserAnimationsModule,
+    GtagModule.forRoot({ trackingId: 'G-5Q9LF9T9Q6', trackPageviews: true }),
+    MoonbaseModule,
     HttpClientModule,
-    FormsModule,
-    NgxSpinnerModule,
-    HammerModule,
-    // SharedModule,
-    FlexLayoutModule,
-    LazyLoadImageModule,
-    MatDialogModule,
-    MatButtonModule
-    ],
-  providers: [ConnetmetamaskService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },{provide:LAZYLOAD_IMAGE_HOOKS,useClass:ScrollHooks}],
+    ToastrModule.forRoot({timeOut: 15000,progressBar:true}),
+    NavModule,
+    SidebarModule,
+    NgxUiLoaderModule,
+  ],
+  providers: [
+  {
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: HammerConfig
+  }],
   bootstrap: [AppComponent],
-  schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA]
+  exports: [
+    AppRoutingModule,
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
