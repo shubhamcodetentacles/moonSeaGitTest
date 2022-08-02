@@ -4,6 +4,10 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'main' }} then job3
+    steps:
+         - uses: actions/checkout@v3
+         - name: Use
+    
   job2:
     needs: job1
     runs-on: ubuntu-latest
