@@ -1,16 +1,9 @@
 name: build
-on: push
+on:
+  push:
+    branches: [ "main","rohan" ]
 jobs:
   job1:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'main' }} then job3
-    steps:
-         - uses: actions/checkout@v3
-         - name: Use
-         - run: npm install -g @angular/cli
-    
-  job2:
-    needs: job1
     runs-on: ubuntu-latest
     environment: production
     strategy:
@@ -26,10 +19,34 @@ jobs:
           - run: npm install -g @angular/cli
           - run : npm install --force
           - run: npm run build
+          - name: 📂 Sync files
+          - if: '$CI_COMMIT_REF_NAME == "main"'
+            uses: Penguibird/FTP-Deploy-Action@4.2.0
+            with:
+                server: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                password: ${{ secrets.SSHKEY }}
+                port: ${{secrets.PORT}}
+                local-dir: ./dist/moonshot-web/
+    
   job3:
-    needs: job1
     runs-on: ubuntu-latest
     steps:
-      - run: npm install -g @angular/cli
-      - run : npm install --force
-      - run: npm run build
+          - uses: actions/checkout@v3
+          - name: Use Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+              cache: 'npm'
+          - run: npm install -g @angular/cli
+          - run : npm install --force
+          - run: npm run build
+          - name: 📂 Sync files
+          - if: '$CI_COMMIT_REF_NAME == "main"'
+            uses: Penguibird/FTP-Deploy-Action@4.2.0
+            with:
+                server: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                password: ${{ secrets.SSHKEY }}
+                port: ${{secrets.PORT}}
+                local-dir: ./dist/moonshot-web/
