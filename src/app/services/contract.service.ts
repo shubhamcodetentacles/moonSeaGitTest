@@ -15,6 +15,9 @@ import {
   SignSellOrder,
   SignSellOrder01,
 } from '../model/signBuyerOrder';
+import { CHAIN_CONFIGS } from 'src/assets/blockchainjson/blockchain.configs';
+
+
 
 const nft721Abi = require('./../../assets/abis/nft721.json');
 const nft1155Abi = require('./../../assets/abis/nft1155.json');
@@ -25,6 +28,13 @@ const config = require('./../../assets/configFiles/tokenAddress.json');
 //  Create WalletConnect Provider
 const provider = new WalletConnectProvider({
   infuraId: 'b0287acccb124ceb8306f3192f9e9c04',
+  rpc: {
+    1: environment.ETHERRPC,
+    56: environment.BscRPC,
+    97: environment.MATICRPC,
+    1285:environment.MOVERRPC,
+  },
+  chainId: 56
 });
 
 @Injectable({
@@ -38,7 +48,7 @@ export class ContractService {
   nft1155Contract: any;
   exchangeAbiContract: any;
   private walletDetails$: BehaviorSubject<any> = new BehaviorSubject(null);
-
+  chainConfigs = CHAIN_CONFIGS;
   nft721Address :any;
   nft1155Address :any;
   exchangeV1Address :any;
@@ -120,6 +130,7 @@ export class ContractService {
       this.windowRef.nativeWindow.ethereum.on(
         'accountsChanged',
         async function (accounts: any) {
+          sessionStorage.removeItem('createCollectionSignature')
           var address = await that.signer.getAddress();
           that.setAddress(address);
           that.isAcountChangedSub.next(1);
@@ -151,6 +162,7 @@ export class ContractService {
 
     provider.on('accountsChanged', async (accounts: string[]) => {
       var address = await this.signer.getAddress();
+      debugger
       this.setAddress(address);
     });
 
@@ -161,6 +173,7 @@ export class ContractService {
 
     // Subscribe to session disconnection
     provider.on('networkChanged', (code: number, reason: string) => {
+      debugger
       this.connectAccountWalletConnect(originpage);
     });
 
@@ -168,22 +181,30 @@ export class ContractService {
   }
 
   switchNetwork(chainId: any) {
-    let sed = new Promise((resolve, reject) => {
-      this.windowRef.nativeWindow.ethereum
-        .request({
-          method: 'wallet_switchEthereumChain',
-          params: [
-            {
-              chainId: chainId, //"0x13881"// chainId in hexadecimal, decimal equivalent is 80001
-            },
-          ],
-        })
-        .then((success: any) => {
-          resolve('doneeeeee');
-        })
-        .catch((err: any) => {
-          reject(err);
-        });
+    // let sed = new Promise((resolve, reject) => {
+    //   this.windowRef.nativeWindow.ethereum
+    //     .request({
+    //       method: 'wallet_switchEthereumChain',
+    //       params: [
+    //         {
+    //           chainId: chainId, 
+    //         },
+    //       ],
+    //     })
+    //     .then((success: any) => {
+    //       resolve('doneeeeee');
+    //     })
+    //     .catch((err: any) => {
+    //       this.toastr.error(err.message)
+    //       reject(err);
+    //     });
+    // });
+
+    // return sed;
+    debugger
+    let sed = new Promise(async (resolve, reject) => {
+      await this.windowRef.nativeWindow.ethereum.request(this.chainConfigs[parseInt(chainId, 16)].config);
+      resolve('doneeeeee');
     });
 
     return sed;
@@ -345,7 +366,7 @@ export class ContractService {
       this.nft721Contract
         .mint(nftId.toString(), environment.tockenUri+nftId.toString())
         .then(function (hash: any) {
-          resolve({ hash: hash.hash, status: true });
+          resolve({ hash: hash, status: true });
         })
         .catch(function (e: any) {
           reject(e);
@@ -368,7 +389,7 @@ export class ContractService {
       this.nft1155Contract
         .mint(nftId,  noOfCopies, environment.tockenUri)
         .then(function (hash: any) {
-          resolve({ hash: hash.hash, status: true });
+          resolve({ hash: hash, status: true });
         })
         .catch(function (e: any) {
           console.log(e);
@@ -379,16 +400,16 @@ export class ContractService {
     return promise;
   }
 
-  setApprovalForAll(type: boolean, blockchainId: any) {
+  setApprovalForAll(type: boolean, blockchainId: any,nftAddress:any) {
 
     debugger
 
     var contractObj: any;
     if (type) {
-      contractObj = new ethers.Contract(config[environment.configFile][blockchainId].nfterc1155, nft1155Abi, this.signer);
+      contractObj = new ethers.Contract(nftAddress, nft1155Abi, this.signer);
     }
     else {
-      contractObj = new ethers.Contract(config[environment.configFile][blockchainId].nfterc721, nft721Abi, this.signer);
+      contractObj = new ethers.Contract(nftAddress, nft721Abi, this.signer);
 
     }
 
@@ -407,14 +428,14 @@ export class ContractService {
   }
 
 
-  async isApprovedForAll(type: boolean, blockchainId: any) {
+  async isApprovedForAll(type: boolean, blockchainId: any,nftAddress:any) {
     debugger
     var contractObj: any;
     if (type) {
-      contractObj = new ethers.Contract(config[environment.configFile][blockchainId].nfterc1155, nft1155Abi, this.signer);
+      contractObj = new ethers.Contract(nftAddress, nft1155Abi, this.signer);
     }
     else {
-      contractObj = new ethers.Contract(config[environment.configFile][blockchainId].nfterc721, nft721Abi, this.signer);
+      contractObj = new ethers.Contract(nftAddress, nft721Abi, this.signer);
 
     }
 

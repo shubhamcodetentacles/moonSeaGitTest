@@ -21,6 +21,7 @@ import { CreateCollectionComponent } from '../../create-nft/create-collection/cr
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { ImportCollectionComponent } from '../mycollections/import-collection/import-collection.component';
 import { AddEditNftComponent } from '../mycollections/step/add-edit-nft/add-edit-nft.component';
+import { NiceSelectModule } from 'ng-nice-select';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AddEditNftComponent } from '../mycollections/step/add-edit-nft/add-edit
     ReactiveFormsModule,
     DateTimePickerModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    NiceSelectModule
   ]
 })
 export class CollectionModule { 

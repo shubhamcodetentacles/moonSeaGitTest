@@ -47,18 +47,14 @@ export class CollectiondetailsComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private router: Router
   ) {
-    _activatedRoute.params.subscribe(
-      (params) => {
-        this.name = params['name'];
-        // this.setApiLoadingFlag(true); 
-      }
-    );
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnDestroy(): void {
     if (this.unSubscibeRequest) {
       this.unSubscibeRequest.unsubscribe();
     }
+
   }
 
   ngOnInit(): void {
@@ -69,6 +65,12 @@ export class CollectiondetailsComponent implements OnInit, OnDestroy {
       this.connectedAddress = data;
     });
 
+    this._activatedRoute.params.subscribe(
+      (params) => {
+        this.name = params['name'];
+        // this.setApiLoadingFlag(true); 
+      }
+    );
     this.getCollectionDetails();
   }
 
