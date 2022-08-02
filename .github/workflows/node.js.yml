@@ -20,7 +20,6 @@ jobs:
           - run : npm install --force
           - run: npm run build
           - name: 📂 Sync files
-          - if: '$CI_COMMIT_REF_NAME == "main"'
             uses: Penguibird/FTP-Deploy-Action@4.2.0
             with:
                 server: ${{ secrets.HOST }}
@@ -42,7 +41,7 @@ jobs:
           - run : npm install --force
           - run: npm run build
           - name: 📂 Sync files
-          - if: '$CI_COMMIT_REF_NAME == "main"'
+            if: '$CI_COMMIT_REF_NAME == "main"'
             uses: Penguibird/FTP-Deploy-Action@4.2.0
             with:
                 server: ${{ secrets.HOST }}
