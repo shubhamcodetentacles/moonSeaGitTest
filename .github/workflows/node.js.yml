@@ -4,7 +4,7 @@ on:
     branches: [ "main","rohan" ]
 jobs:
   job1:
-#     if: github.repository == 'octo-org/octo-repo-prod'
+    if: github.ref_name == 'rohan'
     runs-on: ubuntu-latest
     environment: production
     strategy:
@@ -30,7 +30,7 @@ jobs:
                 local-dir: ./dist/moonshot-web/
     
   job2:
-    if: github.head_ref == 'main'
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     steps:
           - uses: actions/checkout@v3
