@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl : "http://209.126.10.42/moonsea/api/",
+  apiUrl : "https://tronwing.io/moonsea/api/",
   defaultProfilePic : "img/profile.png",
   configFile : 'testnet',
   bscTestnetScan:"https://testnet.bscscan.com/tx/",

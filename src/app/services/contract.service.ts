@@ -201,10 +201,14 @@ export class ContractService {
     // });
 
     // return sed;
-    debugger
     let sed = new Promise(async (resolve, reject) => {
+    try {
       await this.windowRef.nativeWindow.ethereum.request(this.chainConfigs[parseInt(chainId, 16)].config);
       resolve('doneeeeee');
+    } catch (error) {
+      this.toastr.error(error)
+      reject(error);
+    }
     });
 
     return sed;
