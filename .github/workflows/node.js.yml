@@ -4,6 +4,7 @@ on:
     branches: [ "main","rohan" ]
 jobs:
   job1:
+    if: github.repository == 'octo-org/octo-repo-prod'
     runs-on: ubuntu-latest
     environment: production
     strategy:
@@ -28,7 +29,8 @@ jobs:
                 port: ${{secrets.PORT}}
                 local-dir: ./dist/moonshot-web/
     
-  job3:
+  job2:
+    if: github.event.workflow_run.conclusion == 'main'
     runs-on: ubuntu-latest
     steps:
           - uses: actions/checkout@v3
