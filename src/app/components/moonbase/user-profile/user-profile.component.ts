@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
   imagePath: any;
   file: any;
   listItemsOnSale = [];
-  listItemsOwned: any;
+  listItemsOwned: any = [];
   listItemsLikes: any=[];
   listItemsFollowing: any = [];
   tabName: any = "Created";
@@ -58,6 +58,7 @@ export class UserProfileComponent implements OnInit {
     
     this._activatedRoute.params.subscribe(
       (params) => {
+        this.pageNo = 1;
         this.username = params['username'];
         this.tabName = params['tabName'];
     
@@ -143,7 +144,7 @@ export class UserProfileComponent implements OnInit {
     }
     if (this.tabName == this.tabHeadingsUrl[1]) {
       this.getDataService.getItemsForUser(this.userDetails?.walletAddress, 3,this.pageNo,this.PageSize).subscribe((response: any) => {
-        this.listItemsOnSale = response.data;
+        this.listItemsOnSale.push(...response.data);
         this.setApiLoadingFlag(false);
       },(err:any)=>{
         this.setApiLoadingFlag(false);
@@ -151,7 +152,7 @@ export class UserProfileComponent implements OnInit {
     }
     if (this.tabName == this.tabHeadingsUrl[2]) {
       this.getDataService.getItemsForUser(this.userDetails?.walletAddress, 2,this.pageNo,this.PageSize).subscribe((response: any) => {
-        this.listItemsOwned = response.data;
+        this.listItemsOwned.push(...response.data);
         this.setApiLoadingFlag(false);
       },(err:any)=>{
         this.setApiLoadingFlag(false);
@@ -161,7 +162,7 @@ export class UserProfileComponent implements OnInit {
     if (this.tabName == this.tabHeadingsUrl[3]) {
       this.getDataService.getItemsForFollowing(this.userDetails?.walletAddress, this.cs.userAddress).subscribe((response: any) => {
         if(response.status == 200){
-          this.listItemsFollowing = response.data;
+          this.listItemsFollowing.push(...response.data);
         }
         this.setApiLoadingFlag(false);
       },(err:any)=>{
@@ -187,7 +188,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   getmyCollectionList() {
-
     this.myCollection = [];
     this.unSubscribeRequest = this.homeService.myCollectionList(this.userDetails?.walletAddress).subscribe((response: any) => {
       if (response.status == 200) {
@@ -202,7 +202,7 @@ export class UserProfileComponent implements OnInit {
           }
         }
 
-        this.myCollection = response.data;
+        this.myCollection.push(...response.data);
         this.setApiLoadingFlag(false);
 
       } else {
@@ -215,7 +215,10 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-
+  loadMore(){
+    this.pageNo = this.pageNo + 1;
+    this.getListData()
+  }
 
   showEditForm() {
     this.showEditCoverForm = true;
