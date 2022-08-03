@@ -6,7 +6,7 @@ jobs:
   job1:
     if: github.ref_name == 'rohan'
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
     strategy:
         matrix:
           node-version: [16.x] 
@@ -32,7 +32,7 @@ jobs:
   job2:
     if: github.ref_name == 'main'
     runs-on: ubuntu-latest
-    environment: development
+    environment: production
     strategy:
         matrix:
           node-version: [16.x]
