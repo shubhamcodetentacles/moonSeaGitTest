@@ -3,7 +3,7 @@ on:
   push:
     branches:
     - main
-      - 'rohan'
+    - rohan
 jobs:
   job1:
     if: github.ref_name == 'rohan'
