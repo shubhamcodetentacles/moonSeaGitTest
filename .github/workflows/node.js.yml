@@ -2,11 +2,7 @@ name: build
 on:
   push:
    branches :
-    - main
     - 'rohan'
-    - '*'
-    - '**'
-    - rohan
    
 jobs:
   job1:
