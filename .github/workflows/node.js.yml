@@ -3,6 +3,7 @@ on:
   push:
    branches :
     - 'rohan'
+    - '**'
    
 jobs:
   job1:
