@@ -4,7 +4,7 @@ on:
     branches: [ "main","rohan" ]
 jobs:
   job1:
-    if: github.repository == 'octo-org/octo-repo-prod'
+#     if: github.repository == 'octo-org/octo-repo-prod'
     runs-on: ubuntu-latest
     environment: production
     strategy:
@@ -12,7 +12,7 @@ jobs:
           node-version: [16.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
           - uses: actions/checkout@v3
-          - name: Use Node.js ${{ matrix.node-version }}
+          - name: Use Node.js ${{ matrix.node-version }}{{github.repository}}
             uses: actions/setup-node@v3
             with:
               node-version: ${{ matrix.node-version }}
