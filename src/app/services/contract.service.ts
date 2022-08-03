@@ -154,6 +154,7 @@ export class ContractService {
       .enable()
       .then(() => console.log('first call resolved'))
       .catch(() => provider.disconnect());
+      provider.chainId = 56;
 
     this.provider = new ethers.providers.Web3Provider(provider);
     var address = '';
@@ -203,7 +204,19 @@ export class ContractService {
     // return sed;
     let sed = new Promise(async (resolve, reject) => {
     try {
+      debugger
+      let w:any = localStorage.getItem('wallet') ?? "1";
+      if(w=="1"){
       await this.windowRef.nativeWindow.ethereum.request(this.chainConfigs[parseInt(chainId, 16)].config);
+    }
+    else
+    {
+      console.log(this.chainConfigs[parseInt(chainId, 16)].config)
+      await provider.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: chainId }]
+      });
+    }
       resolve('doneeeeee');
     } catch (error) {
       this.toastr.error(error)
