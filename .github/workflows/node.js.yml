@@ -9,7 +9,7 @@ jobs:
     environment: production
     strategy:
         matrix:
-          node-version: [16.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+          node-version: [16.x] 
     steps:
           - uses: actions/checkout@v3
           - name: Use Node.js ${{ matrix.node-version }} event  ${{ github.event_name }} BRANCH_NAME ${{ github.ref_name }}
@@ -32,6 +32,10 @@ jobs:
   job2:
     if: github.ref_name == 'main'
     runs-on: ubuntu-latest
+    environment: development
+    strategy:
+        matrix:
+          node-version: [16.x]
     steps:
           - uses: actions/checkout@v3
           - name: Use Node.js ${{ matrix.node-version }}
