@@ -1,73 +1,52 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: Node.js CI
-
+name: build
 on:
   push:
     branches: [ "main","rohan" ]
-  
-
 jobs:
-  build:
-
+  job1:
+#     if: github.repository == 'octo-org/octo-repo-prod'
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'main' }}
     environment: production
-
     strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+        matrix:
+          node-version: [16.x] # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install -g @angular/cli
-    - run : npm install --force
-    - run: npm run build
-  
-
+          - uses: actions/checkout@v3
+          - name: Use Node.js ${{ matrix.node-version }}${{ github.repository }}${{ github.event.workflow_run.conclusion }}
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+              cache: 'npm'
+          - run: npm install -g @angular/cli
+          - run : npm install --force
+          - run: npm run build
+          - name: 📂 Sync files
+            uses: Penguibird/FTP-Deploy-Action@4.2.0
+            with:
+                server: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                password: ${{ secrets.SSHKEY }}
+                port: ${{secrets.PORT}}
+                local-dir: ./dist/moonshot-web/
     
-    
-    on-failure:
-     environment: production
-
-     strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-      - run: npm install -g @angular/cli
-      - run : npm install --force
-      - run: npm run build
-      
-      - name: 📂 Sync files
-        uses: Penguibird/FTP-Deploy-Action@4.2.0
-        with:
-        server: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.SSHKEY }}
-        port: ${{secrets.PORT}}
-        local-dir: ./dist/moonshot-web/
-    
-    
-        
-        
-
-        
-
- 
-   
-    
+  job2:
+    if: github.event.workflow_run.conclusion == 'main'
+    runs-on: ubuntu-latest
+    steps:
+          - uses: actions/checkout@v3
+          - name: Use Node.js ${{ matrix.node-version }}
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-version }}
+              cache: 'npm'
+          - run: npm install -g @angular/cli
+          - run : npm install --force
+          - run: npm run build
+          - name: 📂 Sync files
+            uses: Penguibird/FTP-Deploy-Action@4.2.0
+            with:
+                server: ${{ secrets.HOST }}
+                username: ${{ secrets.USERNAME }}
+                password: ${{ secrets.SSHKEY }}
+                port: ${{secrets.PORT}}
+                local-dir: ./dist/moonshot-web/
