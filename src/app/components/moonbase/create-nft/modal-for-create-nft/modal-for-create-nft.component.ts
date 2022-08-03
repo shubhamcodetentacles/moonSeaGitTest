@@ -58,6 +58,7 @@ export class ModalForCreateNftComponent implements OnInit {
   }
 
   async checkNetwork() {
+  
     let checkNetwork: boolean = await this.data.globalService.createContract(
       this.data.details.blockchainId
     );
@@ -66,8 +67,7 @@ export class ModalForCreateNftComponent implements OnInit {
       this.wrongNetwork = true;
       this.mintStatusText = 'Try Again';
       let chainIdd = this.data.globalService.chainId;
-      // chainIdd = parseInt(chainIdd);
-      // chainIdd = chainIdd.toString(16);
+     
       let switchNetwork = this.contractService.switchNetwork(chainIdd);
       switchNetwork.then(
         (res: any) => {
@@ -80,7 +80,10 @@ export class ModalForCreateNftComponent implements OnInit {
         (err: any) => {
           this.wrongNetwork = true;
         }
-      );
+      ).catch((err:any)=>{
+        console.log(err);
+        
+      })
 
     } else {
       this.wrongNetwork = false;
@@ -108,7 +111,9 @@ export class ModalForCreateNftComponent implements OnInit {
       }
       //debugger
       if (status?.status) {
-        this.data.details.transactionHash = status.hash;
+        this.isApiLoading = true;
+        await status.hash.wait(2);
+        this.data.details.transactionHash = status.hash.hash;
         this.isdisabledDoneBtn = true;
 
         let url = 'api/UpdateNftToken';
@@ -166,13 +171,15 @@ export class ModalForCreateNftComponent implements OnInit {
 
     status = await this.data.globalService.isApprovedForAll(
       this.data.details.isMultiple,
-      this.data.details.blockchainId
+      this.data.details.blockchainId,
+      this.data.details.nftAddress
     );
 
     if (status.status == false) {
       status = await this.data.globalService.setApprovalForAll(
         this.data.details.isMultiple,
-        this.data.details.blockchainId
+        this.data.details.blockchainId,
+        this.data.details.nftAddress
       );
       if (status) {
         this.approvalTransactionHash = status.hash.hash;
