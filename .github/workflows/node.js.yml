@@ -5,6 +5,7 @@ on:
     - main
     - 'rohan'
     - '*'
+    - '**'
     - rohan
    
 jobs:
