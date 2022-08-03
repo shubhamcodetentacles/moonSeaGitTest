@@ -1,7 +1,9 @@
 name: build
 on:
   push:
-    branches: ["rohan","main"]
+    branches:
+    - main
+      - rohan
 jobs:
   job1:
     if: github.ref_name == 'rohan'
