@@ -8,6 +8,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { MatDialog } from '@angular/material/dialog';
 import { SocialSharePopUpComponent } from '../../common/social-share-pop-up/social-share-pop-up.component';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-collectiondetails',
@@ -45,7 +46,8 @@ export class CollectiondetailsComponent implements OnInit, OnDestroy {
     private location: Location,
     private ngxService: NgxUiLoaderService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private _titleService : Title
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -59,6 +61,7 @@ export class CollectiondetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    this._titleService.setTitle('Collection Details');
     this.correntRoute = window.location.href;
 
     this.cs.getWalletObs().subscribe((data: any) => {

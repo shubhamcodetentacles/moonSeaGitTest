@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -47,7 +48,7 @@ export class UserProfileComponent implements OnInit {
 
   constructor(public cs: ContractService, private toastrService: ToastrService, private _activatedRoute: ActivatedRoute, private getDataService: GetDataService,
     public dialog: MatDialog, private homeService: HomeService,
-    public contractService: ContractService, private location: Location) {
+    public contractService: ContractService, private location: Location,private _titleService : Title) {
 
       for (let index = 0; index < 100; index++) {
         this.isLoaded[index] = false;
@@ -55,7 +56,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this._titleService.setTitle('User Profile');
     this._activatedRoute.params.subscribe(
       (params) => {
         this.pageNo = 1;

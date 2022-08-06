@@ -153,6 +153,7 @@ export class ModalForCreateNftComponent implements OnInit {
       } else {
         this.rejectedMetamask = true;
         this.mintStatusText = 'Try Again';
+        this.isdisabledDoneBtn = false;
         this.getDataService.showToastr('Something went wrong, please try again.', false);
       }
     } catch (e) {
@@ -160,8 +161,8 @@ export class ModalForCreateNftComponent implements OnInit {
       //debugger
       this.rejectedMetamask = true;
       this.mintStatusText = 'Try Again';
-      this.isdisabledDoneBtn = false;
-      this.getDataService.showToastr(e?.message, false);
+      this.isApiLoading = false;
+      this.getDataService.showToastr('cannot estimate gas; transaction may fail or may require manual gas limit or may token already minted.', false);
     }
   }
 
@@ -188,6 +189,7 @@ export class ModalForCreateNftComponent implements OnInit {
     }
 //debugger
     if (status.status) {
+   
       this.startSaleButton = 'Done';
       this.signatureStatus = 2;
       this.mintingSteps = 3;

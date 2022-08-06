@@ -16,6 +16,7 @@ import {
   SignSellOrder01,
 } from '../model/signBuyerOrder';
 import { CHAIN_CONFIGS } from 'src/assets/blockchainjson/blockchain.configs';
+import rpcUrls from '../../../src/assets/blockchainjson/rpcUrls.json'
 
 
 
@@ -28,13 +29,8 @@ const config = require('./../../assets/configFiles/tokenAddress.json');
 //  Create WalletConnect Provider
 const provider = new WalletConnectProvider({
   infuraId: 'b0287acccb124ceb8306f3192f9e9c04',
-  rpc: {
-    1: environment.ETHERRPC,
-    56: environment.BscRPC,
-    97: environment.MATICRPC,
-    1285:environment.MOVERRPC,
-  },
-  chainId: 56
+  rpc: rpcUrls[environment.configFile].rpc,
+  chainId :rpcUrls[environment.configFile].chainId
 });
 
 @Injectable({
@@ -154,7 +150,6 @@ export class ContractService {
       .enable()
       .then(() => console.log('first call resolved'))
       .catch(() => provider.disconnect());
-      provider.chainId = 56;
 
     this.provider = new ethers.providers.Web3Provider(provider);
     var address = '';
@@ -1165,7 +1160,6 @@ export class ContractService {
       return { balance: 0, status: false, decimals: 0 };
     }
   } catch (error) {
-    console.log(error);
     return { balance: 0, status: false, decimals: 0 };
   }
   }
